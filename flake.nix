@@ -15,7 +15,11 @@
         supabase = pkgs.python3.pkgs.callPackage ./supabase.nix {inherit supabase_functions realtime storage3 postgrest supabase_auth; };
 
       in {
-
+        packages.${system}.supabase-py = {
+          inherit supabase_functions realtime storage3 supabase_auth postgrest supabase;
+          default = supabase;
+        };
+        packages.default = supabase;
         devShells.default = pkgs.mkShell {
           venvDir = "./.venv";
           packages = with python3.pkgs; [
