@@ -8,9 +8,9 @@
 , httpx
 , postgrest
 , realtime
-, gotrue
+, supabase_auth
 , storage3
-, supafunc
+, supabase_functions
 # dev-dependencies
 , black
 , pre-commit
@@ -46,11 +46,11 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     postgrest
     realtime
-    gotrue
+    supabase_auth
     httpx
     h2
     storage3
-    supafunc
+    supabase_functions
   ];
 
   nativeCheckInputs = [
@@ -64,6 +64,11 @@ buildPythonPackage rec {
     python-dotenv
     pytest-asyncio
   ];
+
+  patchPhase = ''
+    find . -type f -exec sed -i 's/supafunc/supabase_functions/g' {} +
+    find . -type f -exec sed -i 's/gotrue/supabase_auth/g' {} +
+  '';
 
   doDecheck = false;
 

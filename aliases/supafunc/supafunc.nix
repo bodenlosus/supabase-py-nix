@@ -1,9 +1,16 @@
-{ lib, buildPythonPackage, supabase_functions, python }:  # Add the original package as an argument
+{ lib, buildPythonPackage, supabase_functions, pythonOlder, setuptools }:  # Add the original package as an argument
 
 buildPythonPackage rec {
   pname = "supafunc-alias";
   version = "0.9.0";
   src = ./.;  # You don't need a separate source; the alias package only provides a module
+  format = "pyproject";
+
+  disabled = pythonOlder "3.9";
+
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   # Dependencies: include the original package
   propagatedBuildInputs = [ supabase_functions ];

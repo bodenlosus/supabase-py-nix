@@ -12,7 +12,7 @@
         storage3 = pkgs.python3.pkgs.callPackage ./storage3.nix {};
         supabase_auth = pkgs.python3.pkgs.callPackage ./supabase_auth.nix {};
         postgrest = pkgs.python3.pkgs.callPackage ./postgrest.nix {};
-        supafunc = pkgs.python3.pkgs.callPackage ./aliases/supafunc.nix {inherit supabase_functions;};
+        supabase = pkgs.python3.pkgs.callPackage ./supabase.nix {inherit supabase_functions realtime storage3 postgrest supabase_auth; };
 
       in {
 
@@ -20,7 +20,7 @@
           venvDir = "./.venv";
           packages = with python3.pkgs; [
             # supabase
-            supafunc
+            supabase
             supabase_functions
             realtime
             storage3

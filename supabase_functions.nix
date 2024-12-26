@@ -27,7 +27,7 @@
 
 buildPythonPackage rec {
   pname = "supafunc";
-  version = "0.9.0";
+  version = "0.7.0";
   pyproject = true;
 
   disabled = pythonOlder "3.9";
@@ -37,15 +37,13 @@ buildPythonPackage rec {
     repo = "functions-py";
     rev = "refs/tags/v${version}";
                    
-    hash = "sha256-tlaXUB7fZ8P4uw2B9Po9z/91WSJhdo3zGkmDLT+K28o="; # Replace with the actual hash
+    hash = "sha256-oCzF8vFHzxxQ0hUEyz5Ueajt7ZpcFE058/ohQDjdvbU="; # Replace with the actual hash
   };
 
   build-system = [ poetry-core ];
 
   dependencies = [
-    (httpx.overrideAttrs (old: {
-      h2 = h2;
-    }))
+    httpx
     h2
     strenum
   ];
