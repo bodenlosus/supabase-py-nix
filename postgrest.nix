@@ -59,15 +59,13 @@ buildPythonPackage rec {
     isort
     pre-commit
     pytest-cov
-    # pytest-depends
+    # pytest-depends # not in nixpkgs currently
     pytest-asyncio
-    # unasync-cli
-    # # Optional docs dependencies
-    # sphinx
+    # unasync-cli # not in nixpkgs currently
+    # Optional docs dependencies
+    # sphinx # not in nixpkgs currently
     # furo
   ];
-
-  # Handle dependency version constraints
 
   pythonImportsCheck = [
     "postgrest"

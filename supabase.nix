@@ -65,6 +65,7 @@ buildPythonPackage rec {
     pytest-asyncio
   ];
 
+  # delas with the rename of supafunc and gotrue
   patchPhase = ''
     find . -type f -exec sed -i 's/supafunc/supabase_functions/g' {} +
     find . -type f -exec sed -i 's/gotrue/supabase_auth/g' {} +
