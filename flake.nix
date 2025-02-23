@@ -6,7 +6,7 @@
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        python3 = pkgs.python39;
+        python3 = pkgs.python3;
         supabase_functions = pkgs.python3.pkgs.callPackage ./supabase_functions.nix {};
         realtime = pkgs.python3.pkgs.callPackage ./realtime.nix {};
         storage3 = pkgs.python3.pkgs.callPackage ./storage3.nix {};
